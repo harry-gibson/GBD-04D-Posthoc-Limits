@@ -1,0 +1,23 @@
+stages:
+  - copy
+copy_to_map_data:
+  only: 
+    - tags
+    - gbd_format
+    - schedules
+  stage: copy
+  tags: [ 'fs1-build-shell' ]
+  script:
+    - ls -lah $TARGET_DIR
+    # the repo includes the output folders and the code folders
+    # we don't want to remove the contents of the output folder archive
+    - rm -rf $TARGET_DIR/Code || true
+    - cp -R . $TARGET_DIR
+    - cd $TARGET_DIR && git checkout -B "$CI_BUILD_REF_NAME" "$CI_BUILD_REF"
+    # write the short hash of the checked-out commit to a text file 
+    # that the code when it runs can use to identify its outputs
+    - git rev-parse --short=7 HEAD>$TARGET_DIR/Code/githash.txt
+    # make the files read-only
+    - chmod -R 755 $TARGET_DIR/Code
+    # but the folder itself can be written (necessary for FME to run)
+    - chmod 777 $TARGET_DIR/Code
