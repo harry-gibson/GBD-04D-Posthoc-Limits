@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+
+  "notifyCheckpoints": true,
+  "notifyVerified": true,
+
+  "notifyUsers": true,
+  "users": ["@daniel_may"]
+}
