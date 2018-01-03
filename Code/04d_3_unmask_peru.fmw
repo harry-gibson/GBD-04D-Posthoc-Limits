@@ -9,10 +9,10 @@
 #          --SourceDataset_GEOTIFF_2 "E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_only_fix_in_ZAF\Pf_PostHoc_ZeroAPIForcing_Limits_2*_5k.tif"
 #          --DestDataset_GEOTIFF "E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_unmask_peru"
 #          --SourceDataset_ESRISHAPE "\\map-fs1.ndph.ox.ac.uk\map_data\GBD2017\Processing\Spatial_Data\MAP_Admin_Units\GBD2017_MAP_MG_5K_All-Units_Master-Geometries\MG_5K_GBD2017_ADMIN0.shp"
-#          --DestDataset_GEOTIFF_4 "E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_only_fix_in_ZAF"
+#          --DestDataset_GEOTIFF_4 "E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_unmask_peru"
 #    
 #    
-#!   LAST_SAVE_DATE="2018-01-03T17:06:48"
+#!   LAST_SAVE_DATE="2018-01-03T18:10:54"
 #!   USAGE=""
 #!   FME_BUILD_NUM="17529"
 #!   MARKDOWN_USAGE=""
@@ -83,7 +83,7 @@
 #!   GENERATE_FME_BUILD_NUM="17529"
 #!   MIN_FEATURES=""
 #!   MAX_FEATURES_PER_FEATURE_TYPE=""
-#!   COORDSYS=""
+#!   COORDSYS="LL-WGS84"
 #!   START_FEATURE=""
 #!   MAX_FEATURES=""
 #!   FEATURE_TYPES=""
@@ -1178,7 +1178,7 @@
 #! />
 #! <GLOBAL_PARAMETER
 #!   GUI_LINE="GUI DIRNAME DestDataset_GEOTIFF_4 Destination GeoTIFF Folder:"
-#!   DEFAULT_VALUE="E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_only_fix_in_ZAF"
+#!   DEFAULT_VALUE="E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_unmask_peru"
 #!   IS_STAND_ALONE="false"
 #! />
 #! </GLOBAL_PARAMETERS>
@@ -1758,7 +1758,7 @@ DEFAULT_MACRO DestDataset_GEOTIFF E:\Data\Harry\Documents\dial-a-map\fix_gbd_lim
 GUI DIRNAME DestDataset_GEOTIFF Destination GeoTIFF Folder:
 DEFAULT_MACRO SourceDataset_ESRISHAPE \\map-fs1.ndph.ox.ac.uk\map_data\GBD2017\Processing\Spatial_Data\MAP_Admin_Units\GBD2017_MAP_MG_5K_All-Units_Master-Geometries\MG_5K_GBD2017_ADMIN0.shp
 GUI MULTIFILE SourceDataset_ESRISHAPE Shapefiles(*.shp)|*.shp|Compressed_Shapefiles(*.shz)|*.shz|All_Files(*)|* Source Esri Shapefile(s):
-DEFAULT_MACRO DestDataset_GEOTIFF_4 E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_only_fix_in_ZAF
+DEFAULT_MACRO DestDataset_GEOTIFF_4 E:\Data\Harry\Documents\dial-a-map\fix_gbd_limits_with_old_africa_mask\out_unmask_peru
 GUI DIRNAME DestDataset_GEOTIFF_4 Destination GeoTIFF Folder:
 INCLUDE [ if {{$(SourceDataset_GEOTIFF_2)} == {}} { puts_real {Parameter 'SourceDataset_GEOTIFF_2' must be given a value.}; exit 1; }; ]
 INCLUDE [ if {{$(DestDataset_GEOTIFF)} == {}} { puts_real {Parameter 'DestDataset_GEOTIFF' must be given a value.}; exit 1; }; ]
@@ -2130,6 +2130,7 @@ ESRISHAPE_1_READER_META_ATTRIBUTES fme_feature_type
 
 # -------------------------------------------------------------------------
 
+GEOTIFF_1_COORDINATE_SYSTEM LL-WGS84
 MULTI_READER_CONTINUE_ON_READER_FAILURE No
 
 # -------------------------------------------------------------------------
