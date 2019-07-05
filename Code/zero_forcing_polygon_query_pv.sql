@@ -1,7 +1,6 @@
 SELECT
   pv_mask.area_id,
   pv_mask.year,
-  areas.area_dset_code,
   ST_AsEWKB(areas.area_multi_polygon) geom,
   areas.area_name
 FROM staging.gbd_zero_avi_mask pv_mask
